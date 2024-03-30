@@ -1,0 +1,55 @@
+<div class="container bg-dark text-light">
+  <form
+    class="row g-3"
+    novalidate
+    [formGroup]="formularyContact"
+    (submit)="onSubmit($event)"
+  >
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Correo</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="name@example.com"
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid':
+            hasError('email', 'email') ||
+            hasError('email', 'required') ||
+            hasError('email', 'minlength')
+        }"
+      />
+      @if (hasError('email', 'email')) {
+      <span class="text-danger">El correo no tiene el formato correcto</span>
+      } @else if (hasError('email', 'minlength')) {
+      <span class="text-danger">Necesitan mas de 5 caracteres</span>
+      } @else if (hasError('email', 'required')) {
+      <span class="text-danger">El correo es requerido</span>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Mensaje</label
+      >
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        formControlName="message"
+        [ngClass]="{
+          'is-invalid':
+            hasError('message', 'required') || hasError('message', 'minlength')
+        }"
+      ></textarea>
+    </div>
+    @if (hasError('message', 'required')) {
+    <span class="text-danger">El mensaje es requerido</span>
+    } @else if (hasError('message', 'minlength')) {
+    <span class="text-danger">Necesitan mas de 5 caracteres</span>
+    }
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+  </form>
+</div>

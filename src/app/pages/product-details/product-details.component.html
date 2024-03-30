@@ -1,0 +1,21 @@
+@if (loading) {
+<div class="container-product">
+  <div class="card" style="width: 18rem">
+    <img
+      src="{{ product.image }}"
+      class="card-img-top"
+      alt="{{ product.title }}"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ product.title }}</h5>
+      <p class="card-text">
+        {{ product.description }}
+      </p>
+      <h5>{{ product.price }}</h5>
+    </div>
+  </div>
+</div>
+
+} @else {
+<h2>Cargando...</h2>
+}

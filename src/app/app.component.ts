@@ -1,13 +1,19 @@
+import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NgClass, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'landing-page-angular-17';
+
+  public menuSelected: string = '';
+
+  onOption(option: string) {
+    this.menuSelected = option;
+  }
 }
